@@ -53,16 +53,16 @@ public class StepDefinition {
 	    
 
 	}
-/*
+
 	@Given("^I select the reason 'Tourism'$")
 	public void i_select_the_reason_Tourism() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
+	    pageObject.selectTourism();
 
 	}
 
 	@Given("^I state I am not travelling or visiting a partner or family$")
 	public void i_state_I_am_not_travelling_or_visiting_a_partner_or_family() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
+	    pageObject.selectNoFamily();
 
 	}
 
@@ -88,5 +88,5 @@ public class StepDefinition {
 	public void i_will_be_informed_You_ll_need_a_visa_to_come_to_the_UK() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 
-	}*/
+	}
 }
