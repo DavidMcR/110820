@@ -32,7 +32,9 @@ public class StepDefinition {
 	}
 	
 	@Given("^I select the reason \"Study\"$")
-	public void i_select_the_reason(){
+	public void i_select_the_reason()
+	
+	{
 		driver.findElement(By.xpath("//*[@id=\"response-2\"]")).click();
 		driver.findElement(By.xpath("//*[@id=\"current-question\"]/button")).click();
 
@@ -50,6 +52,7 @@ public class StepDefinition {
 	    String expected = "You’ll need a visa to study in the UK";
 	    String result = driver.findElement(By.xpath("//*[@id=\"result-info\"]/div[2]/h2")).getText();
 	    assertEquals(expected, result);
+	    System.out.println("#####################"+expected);
 	    
 
 	}
