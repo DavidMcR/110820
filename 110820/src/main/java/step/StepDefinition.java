@@ -24,39 +24,36 @@ public class StepDefinition {
 		pageObject = new PageObject(driver);
 		
 		System.setProperty("webdriver.chrome.driver", "D:\\drivers\\chromedriver.exe");
-		Select countrySelect = new Select(driver.findElement(By.xpath("//*[@id=\"response\"]")));
-		countrySelect.selectByValue(country);
-		driver.findElement(By.xpath("//*[@id=\"current-question\"]/button")).click();
+		pageObject.selectCountryValue(country);
+		pageObject.selectButton();
 	    
 
 	}
 	
 	@Given("^I select the reason \"Study\"$")
-	public void i_select_the_reason()
-	
+	public void i_select_the_reason()	
 	{
-		driver.findElement(By.xpath("//*[@id=\"response-2\"]")).click();
-		driver.findElement(By.xpath("//*[@id=\"current-question\"]/button")).click();
-
+		pageObject.selectStudy();
+		pageObject.selectButton();
+		
 	}
 
 	@Given("^I state I am intending to stay for more than (\\d+) months$")
 	public void i_state_I_am_intending_to_stay_for_more_than_months(int arg1) throws Throwable {
-	    driver.findElement(By.xpath("//*[@id=\"current-question\"]/div/div/fieldset/div[2]/div[2]/label")).click();
-	    driver.findElement(By.xpath("//*[@id=\"current-question\"]/button")).click();
+	    pageObject.selectMoreThanSixMonths();
+	    pageObject.selectButton();
 
 	}
 
 	@Then("^I will be informed 'I will need a visa to study in the UK'$")
 	public void i_will_be_informed_I_will_need_a_visa_to_study_in_the_UK() throws Throwable {
 	    String expected = "You’ll need a visa to study in the UK";
-	    String result = driver.findElement(By.xpath("//*[@id=\"result-info\"]/div[2]/h2")).getText();
+	    String result = pageObject.visaResult();
 	    assertEquals(expected, result);
-	    System.out.println("#####################"+expected);
 	    
 
 	}
-
+/*
 	@Given("^I select the reason 'Tourism'$")
 	public void i_select_the_reason_Tourism() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
@@ -91,5 +88,5 @@ public class StepDefinition {
 	public void i_will_be_informed_You_ll_need_a_visa_to_come_to_the_UK() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 
-	}
+	}*/
 }
