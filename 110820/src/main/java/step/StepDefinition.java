@@ -2,6 +2,8 @@ package step;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,14 +18,18 @@ public class StepDefinition {
 	WebDriver driver;
 	PageObject pageObject;
 	private String country;
-	
+
+	@Before public void setUp() {
+		driver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver", "D:\\drivers\\chromedriver.exe");
+	}
 	@Given("^I provide a nationality of \"([^\"]*)\"$")
 	public void i_provide_a_nationality_of_Japan(String country) {
 		this.country=country;
-		driver = new ChromeDriver();
+		
 		pageObject = new PageObject(driver);
 		
-		System.setProperty("webdriver.chrome.driver", "D:\\drivers\\chromedriver.exe");
+		
 		pageObject.selectCountryValue(country);
 		pageObject.selectButton();
 	    
@@ -88,5 +94,9 @@ public class StepDefinition {
 	public void i_will_be_informed_You_ll_need_a_visa_to_come_to_the_UK() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 
+	}
+	
+	@After public void cleanUp() {
+		driver.close();
 	}
 }
