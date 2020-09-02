@@ -18,6 +18,7 @@ public class StepDefinition {
 	WebDriver driver;
 	PageObject pageObject;
 	private String country;
+	private String reason;
 
 	@Before public void setUp() {
 		driver = new ChromeDriver();
@@ -28,28 +29,39 @@ public class StepDefinition {
 		this.country=country;
 		
 		pageObject = new PageObject(driver);
-		
-		
 		pageObject.selectCountryValue(country);
 		pageObject.selectButton();
 	    
 
 	}
 	
-	@Given("^I select the reason \"Study\"$")
-	public void i_select_the_reason()	
-	{
-		pageObject.selectStudy();
+	@Given("^I select the reason \"([^\"]*)\"$")
+	public void i_select_the_reason(String reason)	
+	{   this.reason=reason;
+		System.out.println(">>>>>>>>>>>>>>>>>>>>"+reason);
+		if (reason.contentEquals("Study")){
+				pageObject.selectStudy();
+		}
+		if (reason.contentEquals("Tourism")) {
+			pageObject.selectTourism();
+		}
 		pageObject.selectButton();
 		
 	}
+	
+	/*@Given("^I select the reason 'Tourism'$")
+	public void i_select_the_reason_Tourism() throws Throwable {
+	    pageObject.selectTourism();
 
+	}*/
 	@Given("^I state I am intending to stay for more than (\\d+) months$")
 	public void i_state_I_am_intending_to_stay_for_more_than_months(int arg1) throws Throwable {
 	    pageObject.selectMoreThanSixMonths();
 	    pageObject.selectButton();
 
 	}
+	
+	
 
 	@Then("^I will be informed 'I will need a visa to study in the UK'$")
 	public void i_will_be_informed_I_will_need_a_visa_to_study_in_the_UK() throws Throwable {
@@ -60,11 +72,7 @@ public class StepDefinition {
 
 	}
 
-	@Given("^I select the reason 'Tourism'$")
-	public void i_select_the_reason_Tourism() throws Throwable {
-	    pageObject.selectTourism();
 
-	}
 
 	@Given("^I state I am not travelling or visiting a partner or family$")
 	public void i_state_I_am_not_travelling_or_visiting_a_partner_or_family() throws Throwable {

@@ -12,7 +12,7 @@ Scenario: Japanese Student
 Scenario: Russian tourist
 
 		Given I provide a nationality of "russia"
-		And I select the reason 'Tourism'
+		And I select the reason "Tourism"
 		
 		And I state I am not travelling or visiting a partner or family
 		
@@ -22,13 +22,13 @@ Scenario: Russian tourist
 Scenario: Japanese Tourist
 	
 		Given I provide a nationality of "japan"
-		And I select the reason 'Tourism'
+		And I select the reason "Tourism"
 		
 		Then I will be informed 'I won't need a visa to study in the UK'
 		
 Scenario: Russian Tourist
 	
 		Given I provide a nationality of "russia"
-		And I select the reason 'Tourism'
+		And I select the reason "Tourism"
 		Then I select family 'No'
 		Then I will be informed 'You'll need a visa to come to the UK'	
