@@ -64,20 +64,20 @@ public class StepDefinition {
 	public void i_will_be_informed_I_will_need_a_visa_to_study_in_the_UK(String answer){
 		this.answer = answer;
 	    //String expected = "You’ll need a visa to study in the UK";
-		answer = answer.replace('\uFFFD','’');
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>"+answer);
+		answer = answer.replace('\uFFFD','’');//this replaces the generic default code with the code on the screen. 
+		//  https://en.wikipedia.org/wiki/Specials_(Unicode_block)
 		String expected = answer;
 	    String result = pageObject.visaResult();
 	    assertEquals(expected, result);
 	    
-
 	}
 
 
 
 	@Given("^I state I am not travelling or visiting a partner or family$")
-	public void i_state_I_am_not_travelling_or_visiting_a_partner_or_family() throws Throwable {
+	public void i_state_I_am_not_travelling_or_visiting_a_partner_or_family(){
 	    pageObject.selectNoFamily();
+	    pageObject.selectButton();  
 
 	}
 
