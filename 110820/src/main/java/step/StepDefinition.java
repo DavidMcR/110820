@@ -24,7 +24,7 @@ public class StepDefinition {
 		System.setProperty("webdriver.chrome.driver", "D:\\drivers\\chromedriver.exe");
 	}
 	@Given("^I provide a nationality of \"([^\"]*)\"$")
-	public void i_provide_a_nationality_of_Japan(String country) {
+	public void i_provide_a_nationality_of(String country) {
 		this.country=country;
 		
 		pageObject = new PageObject(driver);

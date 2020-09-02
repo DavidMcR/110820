@@ -1,5 +1,9 @@
 Feature: Confirm whether a visa is needed to come to the UK.
 
+Background:
+	User opens the home office page. 
+	
+@SmokeTest	
 Scenario: Japanese Student
 		Given I provide a nationality of "japan"
 		And I select the reason "Study"
