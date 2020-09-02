@@ -9,7 +9,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features="C:\\Users\\david\\git\\repository\\110820\\src\\main\\java\\feature\\oh.feature",
 		glue= {"step"}
-		/*,tags= {"@SmokeTest"}*/)
+		,tags= {"@SmokeTest"})
 public class TestRunner {
 
 }
